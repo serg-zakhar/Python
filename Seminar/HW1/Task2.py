@@ -4,7 +4,7 @@
 # а Катя сделала в два раза больше журавликов, чем Петя и Сережа вместе?
 
 num_total = int(input('Введите общее количество журавликов: '))
-if (num_total % 3 != 0 or num_total % 2 != 0):
+if num_total % 3 != 0 or num_total % 2 != 0:
     print('Число должно быть четным и кратным 3!')
 else:
     num_kate = int(num_total / 3 * 2)
