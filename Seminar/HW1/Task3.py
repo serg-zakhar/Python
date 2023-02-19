@@ -9,12 +9,12 @@ num = input('Введите номер билета: ')
 if len(num) != 6:
     print('Число должно быть шестизначным!')
 else:
-    sum1 = 0
-    sum2 = 0
-    for i in range(3):
-        sum1 = sum1 + int(num[i])
-    for i in range(3, 6):
-        sum2 = sum2 + int(num[i])
+    sum1 = int(num[0]) + int(num[1]) + int(num[2])
+    sum2 = int(num[3]) + int(num[4]) + int(num[5])
+    # for i in range(3):
+    #     sum1 = sum1 + int(num[i])
+    # for i in range(3, 6):
+    #     sum2 = sum2 + int(num[i])
     if sum1 == sum2:
         print('Билет счастливый!')
     else:
