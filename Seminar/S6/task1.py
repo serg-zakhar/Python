@@ -3,3 +3,17 @@
 # Пользователь вводит число N - количество элементов в первом массиве, затем N чисел - элементы массива.
 # Затем число M - количество элементов во втором массиве. Затем элементы второго массива
 
+num1_count = int(input("Введите количество элементов 1го массива: "))
+num2_count = int(input("Введите количество элементов 2го массива: "))
+
+num1 = list(int(input(f'Введите {n+1}й элемент 1го массива: ')) for n in range(num1_count))
+num2 = list(int(input(f'Введите {n+1}й элемент 2го массива: ')) for n in range(num2_count))
+print(num1)
+print(num2)
+
+num_merge = []
+for i in num1:
+    if i not in num2:
+        num_merge.append(i)
+
+print(num_merge)

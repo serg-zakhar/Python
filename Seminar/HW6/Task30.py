@@ -10,8 +10,7 @@ num_step = int(input("Введите разность прогрессии: "))
 
 
 def arythmetics_progression(num_first, num_count, num_step):
-    arythm_list = []
-    arythm_list.append(num_first)
+    arythm_list = [num_first]
     for i in range(2, num_count + 1):
         arythm_list.append(num_first + (i - 1) * num_step)
     return arythm_list
