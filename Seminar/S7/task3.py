@@ -7,7 +7,7 @@
 # функция, которая принимает объект и вычисляет его
 # характеристику.
 
-values = [0, 2, 10, 6]
+values = []
 
 
 def same_by(func, values: list):
@@ -19,14 +19,6 @@ def same_by(func, values: list):
         return True
     else:
         return False
-
-
-# check_flag = False
-# if values == None:
-#     return True
-# else:
-#     for value in values:
-#         if func(value) ==
 
 
 if same_by(lambda x: x % 2, values):
