@@ -4,7 +4,6 @@
 # 2. Программа должна сохранять данные в текстовом файле
 # 3. Пользователь может ввести одну из характеристик для поиска определенной записи(Например имя или фамилию человека)
 # 4. Использование функций. Ваша программа не должна быть линейной
-from unittest import case
 
 
 # 1. Открыть файл телефонной книги
@@ -53,6 +52,8 @@ list_phonebook = open_phonebook(file_name)
 num = show_menu()
 if num == 1:
     print(open_phonebook(file_name))
+    show_menu()
 elif num == 2:
     save_phonebook(file_name, list_phonebook)
-# action_menu(num)
+    show_menu()
+
