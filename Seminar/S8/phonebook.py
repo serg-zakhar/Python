@@ -5,8 +5,12 @@ class Contact:
         self.phone = phone
         self.comment = comment
 
+    def to_string(self):
+        return f'{self.name}: {self.phone}, {self.comment}'
+
+
     def __str__(self):
-        return f"{self.name} | {self.phone} | {self.comment}"
+        return f"{self.name:<20} | {self.phone:<20} | {self.comment:<20}"
 
 
 class PhoneBook:
@@ -23,5 +27,17 @@ class PhoneBook:
             new_contact = contact.strip().split(';')
             self.contacts.append(Contact(*new_contact))
 
+    def save(self):
+        data = '\n'.join([contact.to_string() for contact in self.contacts])
+        with open(self.path, 'w', encoding="UTF-8") as file:
+            file.write(data)
+
+    def new_contact(self, name: str, phone: str, comment: str):
+        self.contacts.append(Contact(name, phone, comment))
+
+
     def __str__(self):
-        return '\n'.join(self.contacts)
+        result = ''
+        for contact in self.contacts:
+            result += f'{contact}\n'
+        return result
