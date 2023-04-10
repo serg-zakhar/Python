@@ -1,20 +1,24 @@
 import view
 import model
+import phonebook
 
 pb_opened = False
 
 
 def start():
     while True:
-        pb = model.get_phonebook()
+        # pb = model.get_phonebook()
+        pb = phonebook.PhoneBook('phonebook.txt')
         num_menu = view.main_menu()
         match num_menu:
             case 1:
                 if pb_opened:
                     view.show_red_message("Телефонная книга уже открыта")
                 else:
-                    model.open_phonebook()
-                    view.show_blue_message("Телефонная книга открыта")
+                    pb.open()
+
+                    # model.open_phonebook()
+                    # view.show_blue_message("Телефонная книга открыта")
             case 2:
                 if view.show_contacts(pb, "Телефонная книга пуста или не открыта"):
                     if input(f'\033[33m {"Записать телефонную книгу? [y/n]: "}\033[0m').lower() == 'y':
