@@ -6,7 +6,7 @@
 # 4. Использование функций. Ваша программа не должна быть линейной
 
 import text_fields
-
+import phonebook
 
 def main_menu() -> int:
     print(text_fields.main_menu)
@@ -24,10 +24,11 @@ def show_contacts(book: list[dict], error_message: str):
         show_red_message(error_message)
         return False
     else:
-        for i, contact in enumerate(book, 1):
-            print(f'\033[34m {i}. {contact.get("name"):<20} '
-                  f'{contact.get("phone"):<20} '
-                  f'{contact.get("comment"):<20}\033[0m')
+        print(f'\033[34m{book}\033[0m')
+        # for i, contact in enumerate(book, 1):
+        #     print(f'\033[34m {i}. {contact.get("name"):<20} '
+        #           f'{contact.get("phone"):<20} '
+        #           f'{contact.get("comment"):<20}\033[0m')
         return True
 
 
