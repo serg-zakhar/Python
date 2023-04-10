@@ -31,17 +31,6 @@ class PhoneBook:
         with open(self.path, 'w', encoding="UTF-8") as file:
             file.write(data)
 
-    def menu(self):
-        return '''Главное меню: 
-        1. Показать все контакты
-        2. Найти контакт
-        3. Добавить контакт
-        4. Изменить контакт
-        5. Удалить контакт
-        6. Восстановить контакт
-        7. Сохранить изменения
-        8. Выход'''
-
     def new_contact(self, name: str, phone: str, comment: str):
         self.contacts.append(Contact(name, phone, comment))
 
