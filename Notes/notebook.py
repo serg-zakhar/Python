@@ -1,4 +1,6 @@
 import datetime
+
+
 # import json
 # import csv
 
@@ -56,3 +58,9 @@ class Notebook:
         #     writer = csv.writer(f, delimiter=";")
         #     # for row in data:
         #     writer.writerows(data)
+
+    def change_note(self, n_id: int, header: str, content: str):
+        header = header if header != '' else self.notes[n_id].header
+        content = content if content != '' else self.notes[n_id].content
+        dt = datetime.datetime.today().strftime("%d/%m/%Y %H:%M")
+        self.notes[n_id - 1] = Note(n_id, header, content, dt)

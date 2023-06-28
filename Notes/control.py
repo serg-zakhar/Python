@@ -21,9 +21,10 @@ def start():
             case 4:  # Изменить заметку
                 view.show_notes(nb, "Заметки отсутствуют")
                 index = view.input_index("Выберите заметку для изменения: ")
-                if index and 0 < index <= len(nb.contacts):
-                    nb.change_contact(index - 1, *view.change_contact(nb))
-                    view.show_blue_message(f"заметку {index} изменен")
+                if index and 0 < index <= len(nb.notes):
+                    note = view.change_note(index)
+                    nb.change_note(index, note[1], note[2])
+                    view.show_blue_message(f"заметка {index} изменена")
                 else:
                     view.show_red_message("Введен некорректный номер заметки")
             case 5:  # Удалить заметку

@@ -28,17 +28,29 @@ def add_note(n_id: int):
     header = input("Введите название заметки: ")
     content = input("Введите тело заметки: ")
     dt = datetime.datetime.today()
-    print(dt.year)
-    print(dt.month)
-    print(dt.day)
-    print(dt.hour)
-    print(dt.minute)
+    # print(dt.year)
+    # print(dt.month)
+    # print(dt.day)
+    # print(dt.hour)
+    # print(dt.minute)
     return [n_id, header, content, dt.strftime("%d/%m/%Y %H:%M")]
+
+
+def change_note(n_id: int):
+    show_yellow_message("Введите новые данные, или оставьте поле пустым, если нет изменений")
+    note = add_note(n_id)
+    return note
 
 
 def input_choice(message: str):
     show_yellow_message(message)
     return input().lower()
+
+
+def input_index(message: str):
+    index = input(message)
+    if index.isdigit():
+        return int(index)
 
 
 def show_red_message(message: str):
