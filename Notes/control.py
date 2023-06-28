@@ -5,6 +5,7 @@ import view
 
 def start():
     nb = notebook.Notebook("notes.txt")
+    nb_deleted = []
 
     while True:
         choice = view.main_menu()
@@ -30,9 +31,9 @@ def start():
             case 5:  # Удалить заметку
                 view.show_notes(nb, "Заметки отсутствуют")
                 index = view.input_index("Выберите заметку для удаления: ")
-                if index and 0 < index <= len(nb.contacts):
-                    nb_deleted.append(nb.contacts[index - 1])
-                    nb.delete_contact(index - 1)
+                if index and 0 < index <= len(nb.notes):
+                    nb_deleted.append(nb.notes[index - 1])
+                    nb.delete_note(index - 1)
                     view.show_blue_message('Заметка успешно удалена!')
                 else:
                     view.show_red_message("Введен некорректный номер заметки")
@@ -40,8 +41,8 @@ def start():
                 view.show_notes(nb_deleted, "Отсутствуют заметки для восстановления")
                 index = view.input_index("Выберите заметку для восстановления: ")
                 if index and 0 < index <= len(nb_deleted):
-                    del_contact = nb_deleted[index - 1]
-                    nb.new_contact(del_contact.name, del_contact.phone, del_contact.comment)
+                    del_note = nb_deleted[index - 1]
+                    nb.new_note(del_note[0], del_note[1], del_note[2], del_note[3])
                     nb_deleted.pop(index - 1)
                     view.show_blue_message('Заметка успешно восстановлена!')
                 else:

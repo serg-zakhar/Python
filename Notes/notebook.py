@@ -64,3 +64,6 @@ class Notebook:
         content = content if content != '' else self.notes[n_id].content
         dt = datetime.datetime.today().strftime("%d/%m/%Y %H:%M")
         self.notes[n_id - 1] = Note(n_id, header, content, dt)
+
+    def delete_note(self, n_id: int):
+        self.notes.pop(n_id)
