@@ -32,21 +32,25 @@ def start():
                 view.show_notes(nb, "Заметки отсутствуют")
                 index = view.input_index("Выберите заметку для удаления: ")
                 if index and 0 < index <= len(nb.notes):
+                    n_id_delnote = len(nb_deleted) + 1
+                    print(n_id_delnote)
+                    nb.notes[index - 1].n_id = n_id_delnote
                     nb_deleted.append(nb.notes[index - 1])
                     nb.delete_note(index - 1)
                     view.show_blue_message('Заметка успешно удалена!')
                 else:
                     view.show_red_message("Введен некорректный номер заметки")
             case 6:  # Восстановить заметку
-                view.show_notes(nb_deleted, "Отсутствуют заметки для восстановления")
-                index = view.input_index("Выберите заметку для восстановления: ")
-                if index and 0 < index <= len(nb_deleted):
-                    del_note = nb_deleted[index - 1]
-                    nb.new_note(del_note[0], del_note[1], del_note[2], del_note[3])
-                    nb_deleted.pop(index - 1)
-                    view.show_blue_message('Заметка успешно восстановлена!')
-                else:
-                    view.show_red_message("Введен некорректный номер заметки")
+                view.show_delnotes(nb_deleted, "Отсутствуют заметки для восстановления")
+                if nb_deleted:
+                    index = view.input_index("Выберите заметку для восстановления: ")
+                    if index and 0 < index <= len(nb_deleted):
+                        del_note = nb_deleted[index - 1]
+                        nb.new_note(del_note.n_id, del_note.header, del_note.content, del_note.date)
+                        nb_deleted.pop(index - 1)
+                        view.show_blue_message('Заметка успешно восстановлена!')
+                    else:
+                        view.show_red_message("Введен некорректный номер заметки")
             case 7:  # Сохранить изменения
                 if view.input_choice("Вы хотите сохранить изменения? (y/n): ") == "y":
                     nb.save()

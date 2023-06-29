@@ -23,6 +23,16 @@ def show_notes(notebook, error_message: str):
         return True
 
 
+def show_delnotes(del_nb, error_message: str):
+    if not del_nb:
+        show_red_message(error_message)
+        return False
+    else:
+        for note in del_nb:
+            print(f'\033[34m{note}\033[0m')
+        return True
+
+
 def add_note(n_id: int):
     n_id = n_id
     header = input("Введите название заметки: ")
