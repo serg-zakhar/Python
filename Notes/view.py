@@ -63,6 +63,13 @@ def input_index(message: str):
         return int(index)
 
 
+# def change_id(notebook):
+#     n_id = 1
+#     for note in notebook:
+#         note.id = n_id
+#         n_id = n_id + 1
+
+
 def show_red_message(message: str):
     print(f'\033[31m{"-" * len(message)}')
     print(message)

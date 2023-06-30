@@ -67,3 +67,9 @@ class Notebook:
 
     def delete_note(self, n_id: int):
         self.notes.pop(n_id)
+
+    def change_id(self):
+        n_id = 1
+        for note in self.notes:
+            note.n_id = n_id
+            n_id = n_id + 1

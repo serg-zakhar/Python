@@ -37,6 +37,7 @@ def start():
                     nb.notes[index - 1].n_id = n_id_delnote
                     nb_deleted.append(nb.notes[index - 1])
                     nb.delete_note(index - 1)
+                    nb.change_id()
                     view.show_blue_message('Заметка успешно удалена!')
                 else:
                     view.show_red_message("Введен некорректный номер заметки")
@@ -48,6 +49,7 @@ def start():
                         del_note = nb_deleted[index - 1]
                         nb.new_note(del_note.n_id, del_note.header, del_note.content, del_note.date)
                         nb_deleted.pop(index - 1)
+                        nb.change_id()
                         view.show_blue_message('Заметка успешно восстановлена!')
                     else:
                         view.show_red_message("Введен некорректный номер заметки")
