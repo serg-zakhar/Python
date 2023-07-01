@@ -14,6 +14,17 @@ def main_menu() -> int:
             show_red_message("Неверный пункт меню")
 
 
+def sub_menu() -> int:
+    print(text_fields.sub_menu)
+    length_menu = len(text_fields.sub_menu.split('\n')) - 1
+    while True:
+        num_menu = (input("Выберите пункт: "))
+        if num_menu.isdigit() and 0 < int(num_menu) <= length_menu:
+            return int(num_menu)
+        else:
+            show_red_message("Неверный пункт меню")
+
+
 def show_notes(notebook, error_message: str):
     if not notebook:
         show_red_message(error_message)
@@ -63,11 +74,8 @@ def input_index(message: str):
         return int(index)
 
 
-# def change_id(notebook):
-#     n_id = 1
-#     for note in notebook:
-#         note.id = n_id
-#         n_id = n_id + 1
+def input_search(message: str):
+    return input(message)
 
 
 def show_red_message(message: str):

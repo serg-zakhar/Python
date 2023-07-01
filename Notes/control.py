@@ -13,8 +13,13 @@ def start():
             case 1:  # Показать все заметки
                 view.show_notes(nb, "Заметки отсутствуют")
             case 2:  # Найти заметку
-                search = nb.find_contact(view.input_search("Введите строку для поиска: "))
-                view.show_notes(search, "Заметки не найдены")
+                sub_choice = view.sub_menu()
+                if sub_choice == 1:
+                    search = nb.find_note(view.input_search("Введите строку для поиска: "))
+                    view.show_notes(search, "Заметки не найдены")
+                elif sub_choice == 2:
+
+
             case 3:  # Добавить заметку
                 n_id = len(nb.notes) + 1
                 nb.new_note(*view.add_note(n_id))
@@ -60,13 +65,13 @@ def start():
                 else:
                     view.show_red_message("Заметки не сохранены")
             case 8:  # Выход
-                if view.input_choice("Вы хотите сохранить изменения перед выходом? (y/n): ") == "y":
+                if view.input_choice("Вы хотите сохранить изменения перед выходом? (y/n):") == "y":
                     nb.save()
                     view.show_blue_message("Заметки успешно сохранены")
                     view.show_blue_message("Выход из программы")
                     return
                 else:
+                    view.show_red_message("Изменения не сохранены!")
                     view.show_blue_message("Выход из программы")
                     return
 
-    # view.show_notes(nb, "Заметки отсутствуют")
