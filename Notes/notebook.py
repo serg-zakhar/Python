@@ -1,4 +1,5 @@
 import datetime
+import re
 
 
 # import json
@@ -70,6 +71,26 @@ class Notebook:
         for note in self.notes:
             if search.lower() in note.to_string().lower():
                 result.append(f'{note}')
+        return '\n'.join(result)
+
+    def find_notes(self, dt_start: datetime, dt_end: datetime):
+        result = []
+        for note in self.notes:
+            note_date_str = re.split("[/ :]", note.date)
+            note_date_int = []
+            for var in note_date_str:
+                note_date_int.append(int(var))
+            temp = note_date_int[0]
+            note_date_int[0] = note_date_int[2]
+            note_date_int[2] = temp
+            note_date = datetime.datetime(*note_date_int)
+            print(note_date.strftime("%d/%m/%Y %H:%M"))
+            if dt_start.year <= note_date.year <= dt_end.year:
+                if dt_start.month <= note_date.month <= dt_end.month:
+                    if dt_start.day <= note_date.day <= dt_end.day:
+                        if dt_start.hour <= note_date.hour <= dt_end.hour:
+                            if dt_start.minute <= note_date.minute <= dt_end.minute:
+                                result.append(f'{note}')
         return '\n'.join(result)
 
     def delete_note(self, n_id: int):

@@ -78,6 +78,32 @@ def input_search(message: str):
     return input(message)
 
 
+def input_date(message: str):
+    str_date = input(f'\033[33m{message}\033[0m').split("/")
+    if len(str_date) < 3:
+        show_red_message("Некорректный формат даты: год, месяц, день - обязательные поля!")
+        dt = datetime.datetime.today()
+        print(dt.strftime("%d/%m/%Y %H:%M"))
+        return dt.year, dt.month, dt.day, dt.hour, dt.minute
+    else:
+        int_date = []
+        for var in str_date:
+            int_date.append(int(var))
+    if int_date[0] <= 0:
+        int_date[0] = 1
+    if int_date[1] not in range(1, 13):
+        int_date[1] = 1
+    if int_date[1] in {1, 3, 5, 7, 8, 10, 12} and int_date[2] not in range(1, 32):
+        int_date[2] = 1
+    elif int_date[1] in {4, 6, 9, 11, 13} and int_date[2] not in range(1, 31):
+        int_date[2] = 1
+    elif int_date[1] == 2 and int_date[2] not in range(1, 29):
+        int_date[2] = 1
+    dt = datetime.datetime(*int_date)
+    print(dt.strftime("%d/%m/%Y %H:%M"))
+    return dt.year, dt.month, dt.day, dt.hour, dt.minute
+
+
 def show_red_message(message: str):
     print(f'\033[31m{"-" * len(message)}')
     print(message)

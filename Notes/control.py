@@ -18,8 +18,18 @@ def start():
                     search = nb.find_note(view.input_search("Введите строку для поиска: "))
                     view.show_notes(search, "Заметки не найдены")
                 elif sub_choice == 2:
-
-
+                    dt_search_start = datetime.datetime(*view.input_date("Введите начальную дату \n"
+                                                            "в формате: год/месяц/день/час/минута \n"
+                                                            "'2023/04/01/16/25' означает '1 апреля 2023 16:25' \n"
+                                                            "Если дата не заполнена, или заполнена некорректно, \n"
+                                                            "будут выбраны текущие дата и время: "))
+                    dt_search_end = datetime.datetime(*view.input_date("Введите конечную дату \n"
+                                                            "в формате: год/месяц/день/час/минута \n"
+                                                            "'2023/04/01/16/25' означает '1 апреля 2023 16:25' \n"
+                                                            "Если дата не заполнена, или заполнена некорректно, \n"
+                                                            "будут выбраны текущие дата и время: "))
+                    nb_search = nb.find_notes(dt_search_start, dt_search_end)
+                    view.show_notes(nb_search, "Заметки за указанные даты не найдены")
             case 3:  # Добавить заметку
                 n_id = len(nb.notes) + 1
                 nb.new_note(*view.add_note(n_id))
